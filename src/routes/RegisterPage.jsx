@@ -52,7 +52,7 @@ export default function RegisterPage() {
         {formError && <AppAlert>{formError}</AppAlert>}
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
           <AppField label="Username" hint="Shown as the author of your edits." error={errors.username?.message}>
-            <AppInput autoComplete="username" placeholder="ram_singh" autoFocus {...register('username')} />
+            <AppInput autoComplete="username" placeholder="sam_singh" autoFocus {...register('username')} />
           </AppField>
           <AppField label="Email" hint="Used to log in. Never shown publicly." error={errors.email?.message}>
             <AppInput type="email" autoComplete="email" placeholder="you@example.com" {...register('email')} />

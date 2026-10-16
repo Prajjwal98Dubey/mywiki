@@ -3,8 +3,8 @@ import { slugify, humanizeSlug } from './slug.js';
 
 describe('slugify', () => {
   it.each([
-    ['Ram Singh', 'ram-singh'],
-    ['  ram   SINGH ', 'ram-singh'],
+    ['Sam Singh', 'sam-singh'],
+    ['  sam   SINGH ', 'sam-singh'],
     ['Jane_Doe', 'jane-doe'],
     ["O'Brien (actor)", 'obrien-actor'],
     ['O’Brien', 'obrien'],
@@ -15,7 +15,7 @@ describe('slugify', () => {
     ['प्रज्ज्वल दुबे', 'प्रज्ज्वल-दुबे'],
     ['a/b?c#d', 'a-b-c-d'],
     ['--hello--world--', 'hello-world'],
-    ['ram-singh-1rqdasr3r', 'ram-singh-1rqdasr3r'],
+    ['sam-singh-1rqdasr3r', 'sam-singh-1rqdasr3r'],
     ['!!!', ''],
     ['', ''],
   ])('%j → %j', (input, expected) => {
@@ -23,7 +23,7 @@ describe('slugify', () => {
   });
 
   it('is idempotent', () => {
-    for (const s of ['Ram Singh', "O'Brien (actor)", 'प्रज्ज्वल दुबे', 'Dr. J. Smith, Jr.', 'x'.repeat(120)]) {
+    for (const s of ['Sam Singh', "O'Brien (actor)", 'प्रज्ज्वल दुबे', 'Dr. J. Smith, Jr.', 'x'.repeat(120)]) {
       expect(slugify(slugify(s))).toBe(slugify(s));
     }
   });
@@ -36,7 +36,7 @@ describe('slugify', () => {
 
 describe('humanizeSlug', () => {
   it('turns slugs into display titles', () => {
-    expect(humanizeSlug('ram-singh')).toBe('Ram Singh');
+    expect(humanizeSlug('sam-singh')).toBe('Sam Singh');
     expect(humanizeSlug('élodie-durand')).toBe('Élodie Durand');
   });
 });

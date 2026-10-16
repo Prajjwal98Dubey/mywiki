@@ -21,7 +21,7 @@ export default function AuthShell({ title, subtitle, children }) {
           <em className="text-[#f0c36a]">Share it everywhere.</em>
         </p>
         <p className="mt-3 max-w-sm text-sm text-white/70">
-          Every page gets a clean address like <span className="font-mono text-white">{displayUrl('ram-singh')}</span>.
+          Every page gets a clean address like <span className="font-mono text-white">{displayUrl('sam-singh')}</span>.
         </p>
         <div className="relative mt-auto translate-x-6 translate-y-10 rotate-[-2deg] pt-8">
           <ArticleMock height={340} />

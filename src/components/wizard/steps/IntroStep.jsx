@@ -36,7 +36,7 @@ export default function IntroStep() {
             control={control}
             name="lead"
             render={({ field }) => (
-              <WikitextEditor {...field} {...p} rows={12} placeholder="'''Ram Singh''' (born 21 August 1987) is an Indian civil engineer…" />
+              <WikitextEditor {...field} {...p} rows={12} placeholder="'''Sam Singh''' (born 21 August 1987) is an Indian civil engineer…" />
             )}
           />
         )}

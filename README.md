@@ -29,8 +29,8 @@ fake (`src/api/mock.js`, seeded from `src/fixtures/samplePage.json`). Log in wit
 - **Wiki pages** — `/:slug`, `/:slug/history`, `/:slug/revisions/:revId` — are the Wikipedia (Vector 2022) clone
   (`src/components/layout/`, `src/components/article/`, `src/styles/wiki-content.css`). Rendered inside `WikiLayout`.
 
-Page URLs live at the root: `/ram-singh`; a duplicate name gets a random suffix from the server, e.g.
-`/ram-singh-1rqdasr3r` (PROJECT_SPEC §6.4). Old `/wiki/...` links redirect. A new top-level route must be added to
+Page URLs live at the root: `/sam-singh`; a duplicate name gets a random suffix from the server, e.g.
+`/sam-singh-1rqdasr3r` (PROJECT_SPEC §6.4). Old `/wiki/...` links redirect. A new top-level route must be added to
 `RESERVED_SLUGS` in `src/lib/slug.js` and to the spec (a test enforces the first part).
 
 ## Status

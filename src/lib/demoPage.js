@@ -10,8 +10,8 @@ const portrait = `data:image/svg+xml,${encodeURIComponent(
 )}`;
 
 export const demoPage = {
-  slug: 'ram-singh',
-  title: 'Ram Singh',
+  slug: 'sam-singh',
+  title: 'Sam Singh',
   shortDescription: 'Indian civil engineer and photographer (born 1987)',
   infobox: {
     name: '',
@@ -28,7 +28,7 @@ export const demoPage = {
     ],
   },
   lead:
-    "'''Ram Singh''' (born 21 August 1987) is an Indian civil engineer and documentary photographer, known for his low-cost bridge designs for villages in [[Rajasthan]].{{cite|r1}} His photographs of rural infrastructure during the monsoon have been exhibited in [[Jaipur]] and [[Mumbai]].{{cite|r2}}\n\nSingh has led more than forty community construction projects and mentors young engineers through a volunteer programme he co-founded in 2016.",
+    "'''Sam Singh''' (born 21 August 1987) is an Indian civil engineer and documentary photographer, known for his low-cost bridge designs for villages in [[Rajasthan]].{{cite|r1}} His photographs of rural infrastructure during the monsoon have been exhibited in [[Jaipur]] and [[Mumbai]].{{cite|r2}}\n\nSingh has led more than forty community construction projects and mentors young engineers through a volunteer programme he co-founded in 2016.",
   sections: [
     {
       id: 'd1',

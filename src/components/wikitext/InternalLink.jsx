@@ -6,7 +6,7 @@ const preventDefault = (e) => e.preventDefault();
 
 /**
  * Link to another MyWiki page; red ("new") when linkStatus says it doesn't exist.
- * `title` is the link target as written (e.g. "Ram Singh"), used to prefill /create for red links.
+ * `title` is the link target as written (e.g. "Sam Singh"), used to prefill /create for red links.
  */
 export default function InternalLink({ slug, title: targetTitle, children }) {
   const { linkStatus, mode } = useWikiContext();

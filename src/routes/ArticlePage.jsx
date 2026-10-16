@@ -86,7 +86,7 @@ export default function ArticlePage() {
   if (error) return <LoadError error={error} onRetry={reload} title={humanizeSlug(slug)} />;
 
   const { page, linkStatus, canEdit } = data;
-  // Redirect non-canonical URLs (e.g. /Ram-Singh) to the real slug.
+  // Redirect non-canonical URLs (e.g. /Sam-Singh) to the real slug.
   if (page.slug !== slug) return <Navigate to={pagePath(page.slug) + location.hash} replace />;
 
   return (

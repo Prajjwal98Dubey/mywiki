@@ -140,7 +140,7 @@ export function draftToInput(values) {
   };
 }
 
-/** "'''Ram Singh''' (born 21 August 1987) is an Indian civil engineer." */
+/** "'''Sam Singh''' (born 21 August 1987) is an Indian civil engineer." */
 export function starterSentence({ title, birthDate, deathDate, shortDescription }) {
   const name = title.trim() || 'Name';
   let dates = '';
