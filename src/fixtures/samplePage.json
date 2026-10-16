@@ -1,0 +1,73 @@
+{
+  "page": {
+    "id": "8b1f6c2e-4d3a-4f6b-9a1e-2c7d5e8f9a01",
+    "slug": "jane-doe",
+    "ownerId": "1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f",
+    "title": "Jane Doe",
+    "shortDescription": "Indian software engineer (born 1998)",
+    "infobox": {
+      "name": "",
+      "image": null,
+      "birthDate": "1998-03-15",
+      "birthPlace": "Mumbai, India",
+      "deathDate": null,
+      "deathPlace": "",
+      "fields": [
+        { "label": "Occupation", "value": "Software engineer" },
+        { "label": "Alma mater", "value": "[[IIT Bombay]]" },
+        { "label": "Years active", "value": "2020–present" },
+        { "label": "Known for", "value": "Open-source developer tooling" },
+        { "label": "Website", "value": "[https://janedoe.dev janedoe.dev]" }
+      ]
+    },
+    "lead": "'''Jane Doe''' (born 15 March 1998) is an Indian software engineer known for her work on open-source tooling.{{cite|r1}} She is a maintainer of several widely used build tools and has spoken at developer conferences across Asia and Europe.{{cite|r2}}",
+    "sections": [
+      {
+        "id": "s1",
+        "heading": "Early life and education",
+        "level": 2,
+        "content": "Doe was born in [[Mumbai]], [[India]], to a family of teachers.{{cite|r1}} She attended a local school before studying computer science at [[IIT Bombay]], where she graduated in 2020.\n\nDuring her studies she contributed to ''several'' open-source projects and won a national programming contest."
+      },
+      {
+        "id": "s2",
+        "heading": "Career",
+        "level": 2,
+        "content": "In 2020 she joined a Bengaluru-based startup as a backend engineer.{{cite|r2}} Her notable work includes:\n\n* Built a fast incremental build system\n* Led the migration of the company's services to a new runtime\n* Mentored new contributors through community programmes"
+      },
+      {
+        "id": "s3",
+        "heading": "Open source",
+        "level": 3,
+        "content": "Doe maintains a number of open-source libraries, which together are downloaded millions of times per week.{{cite|r1}}{{cite|r3}} She is a frequent collaborator of [[John Doe]]."
+      },
+      {
+        "id": "s4",
+        "heading": "Speaking",
+        "level": 3,
+        "content": "She has given talks at conferences including:\n\n# DevConf India (2022)\n# OpenTools Europe (2023)\n# BuildCon (2024)"
+      },
+      {
+        "id": "s5",
+        "heading": "Personal life",
+        "level": 2,
+        "content": "Doe lives in Bengaluru. Outside of software, she is an amateur [[Astronomy|astronomer]] and runs a [https://example.com/blog popular blog] about the night sky."
+      }
+    ],
+    "references": [
+      { "id": "r1", "type": "web", "title": "Meet Jane Doe", "url": "https://example.com/jane", "author": "A. Writer", "publisher": "Example News", "date": "2024-05-01", "accessDate": "2026-10-15" },
+      { "id": "r2", "type": "news", "title": "Startup hires open-source veteran", "url": "https://example.com/news", "author": "", "publisher": "Daily Example", "date": "2020-02-10", "accessDate": "2026-10-15" },
+      { "id": "r3", "type": "book", "title": "Modern Build Systems", "url": "", "author": "B. Author", "publisher": "Example Press", "date": "2023", "accessDate": "" },
+      { "id": "r4", "type": "other", "title": "Conference programme 2024", "url": "https://example.com/buildcon", "author": "", "publisher": "BuildCon", "date": "2024", "accessDate": "2026-10-15" }
+    ],
+    "seeAlso": ["John Doe"],
+    "externalLinks": [{ "label": "Official website", "url": "https://janedoe.dev" }],
+    "categories": ["Living people", "1998 births", "Indian software engineers"],
+    "currentRevisionId": "e7a0b1c2-d3e4-4f5a-8b6c-7d8e9f0a1b2c",
+    "revisionCount": 3,
+    "createdAt": "2026-10-15T10:00:00.000Z",
+    "updatedAt": "2026-10-15T12:30:00.000Z"
+  },
+  "linkStatus": { "iit-bombay": false, "mumbai": false, "india": false, "john-doe": true, "astronomy": false },
+  "canEdit": true,
+  "owner": { "id": "1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f", "username": "JaneDoe" }
+}

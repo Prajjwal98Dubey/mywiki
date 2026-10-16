@@ -1,0 +1,353 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/fraunces/full-italic.css';
+@import 'tailwindcss';
+@import './wiki-content.css';
+@import './app.css';
+
+/* Dark mode is driven by html[data-theme="dark"] (set by the bootstrap script in index.html). */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ------------------------------------------------------------------ */
+/* Design tokens — PROJECT_SPEC §4.2                                    */
+/* ------------------------------------------------------------------ */
+:root {
+  --text-size: 16px;
+
+  --color-base: #202122;
+  --color-subtle: #54595d;
+  --color-placeholder: #72777d;
+  --bg-page: #ffffff;
+  --bg-subtle: #f8f9fa;
+  --bg-interactive: #eaecf0;
+  --bg-interactive-hover: #dadde3;
+  --bg-progressive-subtle: #f1f4fd;
+  --bg-warning-subtle: #fdf2d5;
+  --bg-error-subtle: #ffe9e5;
+  --bg-success-subtle: #dff2eb;
+  --border: #a2a9b1;
+  --border-subtle: #c8ccd1;
+  --border-warning: #ab7f2a;
+  --border-error: #d73333;
+  --border-success: #099979;
+  --link: #3366cc;
+  --link-hover: #3056a9;
+  --link-visited: #6a60b0;
+  --link-red: #d73333;
+  --link-red-visited: #a55858;
+  --progressive: #3366cc;
+  --progressive-hover: #3056a9;
+  --progressive-active: #233566;
+  --success: #14866d;
+  --destructive: #d73333;
+  --destructive-hover: #9f3526;
+  --shadow-card: 0 30px 90px -20px rgba(0, 0, 0, 0.3), 0 0 1px 1px rgba(0, 0, 0, 0.05);
+  --shadow-dropdown: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+
+  --header-height: 3.5rem;
+  --sticky-offset: 0px;
+  --column-width: 15.75rem;
+  --page-max-width: 99.75rem; /* 1596px */
+
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  --color-base: #eaecf0;
+  --color-subtle: #a2a9b1;
+  --color-placeholder: #a2a9b1;
+  --bg-page: #101418;
+  --bg-subtle: #202122;
+  --bg-interactive: #27292d;
+  --bg-interactive-hover: #303338;
+  --bg-progressive-subtle: #1b223d;
+  --bg-warning-subtle: #2c2105;
+  --bg-error-subtle: #3c1a13;
+  --bg-success-subtle: #0f2d24;
+  --border: #72777d;
+  --border-subtle: #54595d;
+  --border-warning: #987027;
+  --border-error: #fd7865;
+  --border-success: #3fa684;
+  --link: #88a3e8;
+  --link-hover: #a6bbf5;
+  --link-visited: #a799cd;
+  --link-red: #fd7865;
+  --link-red-visited: #e8968a;
+  --progressive: #6485d1;
+  --progressive-hover: #7d9bdf;
+  --progressive-active: #9db4ec;
+  --success: #3fa684;
+  --destructive: #fd7865;
+  --destructive-hover: #fea898;
+  --shadow-card: 0 30px 90px -20px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+  --shadow-dropdown: 0 2px 6px 0 rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
+}
+
+html[data-width='wide'] {
+  --page-max-width: none;
+}
+
+/* Map tokens into Tailwind utilities: text-wiki-text, bg-wiki-subtle, border-wiki-border, … */
+@theme inline {
+  --color-wiki-text: var(--color-base);
+  --color-wiki-subtle-text: var(--color-subtle);
+  --color-wiki-placeholder: var(--color-placeholder);
+  --color-wiki-page: var(--bg-page);
+  --color-wiki-subtle: var(--bg-subtle);
+  --color-wiki-interactive: var(--bg-interactive);
+  --color-wiki-interactive-hover: var(--bg-interactive-hover);
+  --color-wiki-progressive-subtle: var(--bg-progressive-subtle);
+  --color-wiki-warning-subtle: var(--bg-warning-subtle);
+  --color-wiki-error-subtle: var(--bg-error-subtle);
+  --color-wiki-success-subtle: var(--bg-success-subtle);
+  --color-wiki-border: var(--border);
+  --color-wiki-border-subtle: var(--border-subtle);
+  --color-wiki-border-warning: var(--border-warning);
+  --color-wiki-border-error: var(--border-error);
+  --color-wiki-border-success: var(--border-success);
+  --color-wiki-link: var(--link);
+  --color-wiki-link-hover: var(--link-hover);
+  --color-wiki-red: var(--link-red);
+  --color-wiki-progressive: var(--progressive);
+  --color-wiki-progressive-hover: var(--progressive-hover);
+  --color-wiki-success: var(--success);
+  --color-wiki-destructive: var(--destructive);
+  --color-wiki-destructive-hover: var(--destructive-hover);
+  --shadow-wiki-card: var(--shadow-card);
+  --shadow-wiki-dropdown: var(--shadow-dropdown);
+}
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
+  --font-serif: 'Linux Libertine', 'Libertinus Serif', Georgia, Times, 'Source Serif Pro', serif;
+  --breakpoint-toc: 70rem; /* 1120px: TOC sidebar */
+  --breakpoint-wide: 87.5rem; /* 1400px: pinned Appearance column */
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-base);
+    background: var(--bg-page);
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg-page);
+    color: var(--color-base);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--progressive);
+    outline-offset: 1px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: default;
+  }
+}
+
+@layer components {
+  /* Codex-like text input */
+  .cdx-input {
+    display: block;
+    width: 100%;
+    min-height: 2rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--bg-page);
+    color: var(--color-base);
+    font: inherit;
+    font-size: 0.875rem;
+    line-height: 1.375;
+    box-shadow: inset 0 0 0 1px transparent;
+    transition: border-color 100ms, box-shadow 100ms;
+  }
+  .cdx-input::placeholder {
+    color: var(--color-placeholder);
+  }
+  .cdx-input:hover {
+    border-color: var(--color-placeholder);
+  }
+  .cdx-input:focus {
+    outline: none;
+    border-color: var(--progressive);
+    box-shadow: inset 0 0 0 1px var(--progressive);
+  }
+  .cdx-input[aria-invalid='true'] {
+    border-color: var(--destructive);
+  }
+  .cdx-input[aria-invalid='true']:focus {
+    box-shadow: inset 0 0 0 1px var(--destructive);
+  }
+  .cdx-input:disabled {
+    background: var(--bg-interactive);
+    color: var(--color-placeholder);
+  }
+
+  /* Codex-like buttons */
+  .cdx-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    min-height: 2rem;
+    min-width: 2rem;
+    padding: 0 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--bg-subtle);
+    color: var(--color-base);
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.375;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 100ms, border-color 100ms, color 100ms, box-shadow 100ms;
+  }
+  .cdx-button:hover {
+    background: var(--bg-interactive);
+    text-decoration: none;
+  }
+  .cdx-button:focus-visible {
+    outline: none;
+    border-color: var(--progressive);
+    box-shadow: inset 0 0 0 1px var(--progressive), inset 0 0 0 2px var(--bg-page);
+  }
+  .cdx-button:disabled {
+    background: var(--bg-interactive);
+    border-color: var(--border-subtle);
+    color: var(--color-placeholder);
+  }
+  .cdx-button--primary {
+    background: var(--progressive);
+    border-color: var(--progressive);
+    color: #fff;
+  }
+  .cdx-button--primary:hover {
+    background: var(--progressive-hover);
+    border-color: var(--progressive-hover);
+  }
+  .cdx-button--primary:focus-visible {
+    border-color: var(--progressive);
+    box-shadow: inset 0 0 0 1px var(--progressive), inset 0 0 0 2px #fff;
+  }
+  .cdx-button--destructive.cdx-button--primary {
+    background: var(--destructive);
+    border-color: var(--destructive);
+  }
+  .cdx-button--destructive.cdx-button--primary:hover {
+    background: var(--destructive-hover);
+    border-color: var(--destructive-hover);
+  }
+  .cdx-button--quiet {
+    background: transparent;
+    border-color: transparent;
+  }
+  .cdx-button--quiet:hover {
+    background: var(--bg-interactive);
+  }
+  html[data-theme='dark'] .cdx-button--primary,
+  html[data-theme='dark'] .cdx-button--primary:hover {
+    color: #101418;
+  }
+
+  /* Dropdown / popover surface */
+  .wiki-dropdown {
+    background: var(--bg-page);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    box-shadow: var(--shadow-dropdown);
+  }
+}
+
+/* Page container width (Standard = 1596px max, Wide = full) */
+.page-container {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 40rem) {
+  .page-container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Main page boxes (Wikipedia main page look) */
+:root {
+  --mp-welcome-bg: #f8f9fa;
+  --mp-green-bg: #f5fffa;
+  --mp-green-head: #cef2e0;
+  --mp-green-border: #a3bfb1;
+  --mp-blue-bg: #f5faff;
+  --mp-blue-head: #cedff2;
+  --mp-blue-border: #a3b0bf;
+}
+html[data-theme='dark'] {
+  --mp-welcome-bg: #202122;
+  --mp-green-bg: #0d1a14;
+  --mp-green-head: #1c3a2c;
+  --mp-green-border: #3e5c4d;
+  --mp-blue-bg: #0d1520;
+  --mp-blue-head: #1c2c42;
+  --mp-blue-border: #3e4c5e;
+}
+.mp-welcome {
+  border: 1px solid var(--border-subtle);
+  background: var(--mp-welcome-bg);
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+.mp-box {
+  border: 1px solid var(--mp-blue-border);
+  background: var(--mp-blue-bg);
+}
+.mp-box-green {
+  border-color: var(--mp-green-border);
+  background: var(--mp-green-bg);
+}
+.mp-box-heading {
+  margin: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--mp-blue-border);
+  background: var(--mp-blue-head);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.mp-box-green .mp-box-heading {
+  border-color: var(--mp-green-border);
+  background: var(--mp-green-head);
+}
+
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

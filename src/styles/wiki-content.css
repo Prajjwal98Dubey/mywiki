@@ -1,0 +1,359 @@
+/*
+ * Article typography (Vector 2022 look). Kept in plain CSS so the em values stay exact.
+ * Everything is scoped under .mw-content (body) or .mw-page-title (title bar).
+ */
+
+/* ------------------------------------------------------------------ */
+/* Title bar                                                           */
+/* ------------------------------------------------------------------ */
+.firstHeading {
+  font-family: var(--font-serif);
+  font-size: 1.8em;
+  font-weight: 400;
+  line-height: 1.375;
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+  color: var(--color-base);
+}
+
+.mw-page-title {
+  font-size: var(--text-size);
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* Page tabs (Article | Read Edit View history) */
+.vector-tabs {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  min-height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.vector-tabs ul {
+  display: flex;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.vector-tabs li a {
+  display: block;
+  padding: 0.5rem 0.5rem 0.4375rem;
+  margin: 0 0.25rem;
+  color: var(--link);
+}
+.vector-tabs li:first-child a {
+  margin-left: 0;
+}
+.vector-tabs li.selected a {
+  color: var(--color-base);
+  box-shadow: inset 0 -2px 0 0 var(--color-base);
+}
+.vector-tabs li a:hover {
+  text-decoration: none;
+  box-shadow: inset 0 -2px 0 0 var(--link);
+}
+.vector-tabs li.selected a:hover {
+  box-shadow: inset 0 -2px 0 0 var(--color-base);
+}
+
+/* ------------------------------------------------------------------ */
+/* Body content                                                        */
+/* ------------------------------------------------------------------ */
+.mw-content {
+  font-family: var(--font-sans);
+  font-size: var(--text-size);
+  line-height: 1.6;
+  color: var(--color-base);
+  overflow-wrap: break-word;
+}
+.mw-content::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.mw-content p {
+  margin: 0.5em 0;
+}
+
+.mw-content h2,
+.mw-content h3 {
+  color: var(--color-base);
+  scroll-margin-top: calc(var(--sticky-offset) + 0.5rem);
+  overflow: hidden; /* do not run under the floated infobox */
+}
+
+.mw-content h2 {
+  font-family: var(--font-serif);
+  font-size: 1.5em;
+  font-weight: 400;
+  line-height: 1.375;
+  margin: 1em 0 0.25em;
+  padding: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.mw-content h3 {
+  font-family: var(--font-sans);
+  font-size: 1.2em;
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 0.3em 0 0;
+  padding-top: 0.5em;
+}
+
+.mw-content ul {
+  list-style: square;
+  margin: 0.3em 0 0 1.6em;
+  padding: 0;
+}
+.mw-content ol {
+  list-style: decimal;
+  margin: 0.3em 0 0 3.2em;
+  padding: 0;
+}
+.mw-content li {
+  margin-bottom: 0.1em;
+}
+.mw-content ul + p,
+.mw-content ol + p {
+  margin-top: 0.5em;
+}
+
+/* Links */
+.mw-content a,
+.mw-page-title a {
+  color: var(--link);
+  text-decoration: none;
+}
+.mw-content a:visited {
+  color: var(--link-visited);
+}
+.mw-content a:hover {
+  text-decoration: underline;
+}
+.mw-content a.new,
+.mw-content a.new:visited {
+  color: var(--link-red);
+}
+.mw-content a.new:visited {
+  color: var(--link-red-visited);
+}
+
+/* External link icon (Codex "linkExternal", tinted with currentColor) */
+.mw-content a.external::after {
+  content: '';
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-left: 0.2em;
+  vertical-align: baseline;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M17 17H3V3h5V1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5h-2z'/%3E%3Cpath d='m11 1 3.29 3.29-5.73 5.73 1.42 1.42 5.73-5.73L19 9V1z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M17 17H3V3h5V1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5h-2z'/%3E%3Cpath d='m11 1 3.29 3.29-5.73 5.73 1.42 1.42 5.73-5.73L19 9V1z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+/* Section [edit] links */
+.mw-editsection {
+  font-family: var(--font-sans);
+  font-size: small;
+  font-weight: 400;
+  line-height: 1;
+  margin-left: 1em;
+  white-space: nowrap;
+  vertical-align: baseline;
+  user-select: none;
+  unicode-bidi: isolate;
+}
+.mw-editsection-bracket {
+  color: var(--color-subtle);
+}
+.mw-editsection-bracket:first-child {
+  margin-right: 0.25em;
+}
+.mw-editsection-bracket:last-child {
+  margin-left: 0.25em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Citations                                                           */
+/* ------------------------------------------------------------------ */
+.mw-content sup.reference {
+  font-size: 80%;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  white-space: nowrap;
+  unicode-bidi: isolate;
+  scroll-margin-top: calc(var(--sticky-offset) + 2rem);
+}
+.mw-content sup.reference a,
+.mw-content sup.reference a:visited {
+  color: var(--link);
+}
+.mw-content sup.reference.cite-error {
+  color: var(--destructive);
+}
+.mw-content sup.reference:target,
+.mw-content ol.references li:target {
+  background-color: var(--bg-progressive-subtle);
+}
+
+.reflist {
+  font-size: 90%;
+  margin-bottom: 0.5em;
+}
+.mw-content ol.references {
+  margin: 0.3em 0 0 3.2em;
+  list-style-type: decimal;
+}
+.mw-content ol.references li {
+  scroll-margin-top: calc(var(--sticky-offset) + 2rem);
+}
+.mw-cite-backlink {
+  margin-right: 0.25em;
+}
+.mw-cite-backlink a,
+.mw-cite-backlink a:visited {
+  color: var(--link);
+}
+.mw-cite-backlink sup {
+  font-size: 80%;
+  margin-right: 0.15em;
+}
+.reference-text cite {
+  font-style: inherit;
+}
+
+/* ------------------------------------------------------------------ */
+/* Infobox                                                             */
+/* ------------------------------------------------------------------ */
+.infobox {
+  float: right;
+  clear: right;
+  width: 22em;
+  margin: 0.5em 0 0.5em 1em;
+  padding: 0.2em;
+  font-size: 88%;
+  line-height: 1.5;
+  border: 1px solid var(--border);
+  /* Tailwind's preflight collapses table borders, which would cancel the padding and cell spacing. */
+  border-collapse: separate;
+  border-spacing: 3px;
+  background: var(--bg-subtle);
+  color: var(--color-base);
+}
+.infobox th,
+.infobox td {
+  vertical-align: top;
+  padding: 0.2em;
+}
+.infobox .infobox-above {
+  font-size: 125%;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.2em;
+  line-height: 1.4;
+}
+.infobox .infobox-image {
+  text-align: center;
+  padding: 0.2em 0;
+}
+.infobox .infobox-image img {
+  display: block;
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.infobox .infobox-caption {
+  display: block;
+  font-size: 95%;
+  line-height: 1.5;
+  text-align: center;
+  padding-top: 0.2em;
+}
+.infobox .infobox-label {
+  text-align: left;
+  font-weight: 700;
+  padding-right: 0.65em;
+  white-space: nowrap;
+}
+.infobox .infobox-data {
+  text-align: left;
+}
+
+@media (max-width: 639.98px) {
+  .infobox {
+    float: none;
+    width: 100%;
+    margin: 0.5em 0 1em;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Categories                                                          */
+/* ------------------------------------------------------------------ */
+.catlinks {
+  clear: both;
+  margin-top: 1em;
+  padding: 5px;
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.catlinks ul {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.catlinks li {
+  display: inline-block;
+  margin: 0.125em 0;
+  padding: 0 0.5em;
+  border-left: 1px solid var(--border);
+  line-height: 1.25em;
+}
+.catlinks li:first-child {
+  padding-left: 0.25em;
+  border-left: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Notice boxes (old revision, not found)                              */
+/* ------------------------------------------------------------------ */
+.mw-message-box {
+  margin: 0.5em 0 1em;
+  padding: 0.5em 0.75em;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-subtle);
+  font-size: 0.875rem;
+}
+.mw-message-box-warning {
+  background: var(--bg-warning-subtle);
+  border-color: var(--border-warning);
+}
+.mw-message-box-error {
+  background: var(--bg-error-subtle);
+  border-color: var(--border-error);
+}
+.mw-message-box-success {
+  background: var(--bg-success-subtle);
+  border-color: var(--border-success);
+}
+
+/* Preview mode: links are inert */
+.mw-content.is-preview a {
+  cursor: default;
+}

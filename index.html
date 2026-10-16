@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-width="standard">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>MyWiki</title>
+    <script>
+      // Apply saved appearance before first paint (no flash). Keep in sync with AppearanceContext.
+      (function () {
+        var sizes = { small: '14px', standard: '16px', large: '20px' };
+        var s = {};
+        try { s = JSON.parse(localStorage.getItem('mywiki:appearance')) || {}; } catch (e) { s = {}; }
+        var root = document.documentElement;
+        var theme = s.theme === 'light' || s.theme === 'dark' ? s.theme : 'auto';
+        if (theme === 'auto') {
+          theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        root.setAttribute('data-theme', theme);
+        root.setAttribute('data-width', s.width === 'wide' ? 'wide' : 'standard');
+        root.style.setProperty('--text-size', sizes[s.textSize] || sizes.standard);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
