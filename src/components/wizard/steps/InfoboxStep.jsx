@@ -1,14 +1,13 @@
 import { useRef, useState } from 'react';
 import { Controller, useFieldArray, useFormContext, useWatch } from 'react-hook-form';
 import { uploadImage } from '../../../api/uploads.js';
+import { checkImageFile, IMAGE_ACCEPT, uploadErrorMessage } from '../../../lib/imageFile.js';
 import { AppAlert, AppField, AppInput } from '../../app/forms.jsx';
 import Icon from '../../ui/Icon.jsx';
 import DateField from '../DateField.jsx';
 import { useFieldErrors } from '../fieldError.js';
 
 const PRESETS = ['Occupation', 'Nationality', 'Alma mater', 'Years active', 'Known for', 'Spouse', 'Children', 'Website'];
-const ACCEPT = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-const MAX_BYTES = 5 * 1024 * 1024;
 
 function PhotoUpload() {
   const { control, setValue, register } = useFormContext();
@@ -21,14 +20,17 @@ function PhotoUpload() {
   const onFile = async (file) => {
     setError(null);
     if (!file) return;
-    if (!ACCEPT.includes(file.type)) return setError('Please choose a JPEG, PNG, WebP or GIF image.');
-    if (file.size > MAX_BYTES) return setError('That image is larger than 5 MB.');
+    const problem = await checkImageFile(file);
+    if (problem) {
+      if (inputRef.current) inputRef.current.value = '';
+      return setError(problem);
+    }
     setProgress(0);
     try {
       const res = await uploadImage(file, { onProgress: setProgress });
       setValue('infobox.image.url', res.url, { shouldDirty: true, shouldValidate: false });
     } catch (e) {
-      setError(e.code === 'UNAUTHENTICATED' ? 'Your session expired. Please log in again.' : e.message || 'Upload failed.');
+      setError(uploadErrorMessage(e));
     } finally {
       setProgress(null);
       if (inputRef.current) inputRef.current.value = '';
@@ -42,7 +44,7 @@ function PhotoUpload() {
           {url ? <img src={url} alt="" className="size-full object-cover" /> : <Icon name="image" size={30} />}
         </div>
         <div className="space-y-2">
-          <input ref={inputRef} type="file" accept={ACCEPT.join(',')} className="sr-only" id="photo-input" onChange={(e) => onFile(e.target.files?.[0])} />
+          <input ref={inputRef} type="file" accept={IMAGE_ACCEPT} className="sr-only" id="photo-input" onChange={(e) => onFile(e.target.files?.[0])} />
           <div className="flex flex-wrap gap-2">
             <label htmlFor="photo-input" className={`app-btn app-btn-secondary app-btn-sm cursor-pointer ${progress != null ? 'pointer-events-none opacity-60' : ''}`}>
               <Icon name="image" size={14} /> {url ? 'Replace photo' : 'Upload a photo'}
@@ -69,7 +71,7 @@ function PhotoUpload() {
       {url && (
         <div className="grid gap-5 sm:grid-cols-2">
           <AppField label="Photo description" hint="For people who can’t see the image." error={err('infobox.image.alt')}>
-            <AppInput placeholder="e.g. Ram Singh smiling, in 2024" {...register('infobox.image.alt')} />
+            <AppInput placeholder="e.g. Sam Singh smiling, in 2024" {...register('infobox.image.alt')} />
           </AppField>
           <AppField label="Caption (optional)" error={err('infobox.image.caption')}>
             <AppInput placeholder="e.g. Singh in 2024" {...register('infobox.image.caption')} />
