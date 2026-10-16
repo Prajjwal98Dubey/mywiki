@@ -10,7 +10,7 @@ export const RESERVED_SLUGS = new Set([
   'settings', 'help', 'about', 'admin', 'assets', 'static', 'src', 'node_modules',
 ]);
 
-/** "Ram Singh" → "ram-singh". Idempotent; may return "" for titles made only of symbols. */
+/** "Sam Singh" → "sam-singh". Idempotent; may return "" for titles made only of symbols. */
 export function slugify(title) {
   if (typeof title !== 'string') return '';
   const s = title
@@ -22,7 +22,7 @@ export function slugify(title) {
   return Array.from(s).slice(0, MAX_BASE_SLUG_LENGTH).join('').replace(/-+$/, '');
 }
 
-/** "ram-singh" → "Ram Singh" — a best-effort display title when only the slug is known. */
+/** "sam-singh" → "Sam Singh" — a best-effort display title when only the slug is known. */
 export function humanizeSlug(slug) {
   return String(slug ?? '')
     .split('-')
@@ -34,12 +34,12 @@ export function humanizeSlug(slug) {
     .join(' ');
 }
 
-/** Site-relative URL of a page: "/ram-singh". */
+/** Site-relative URL of a page: "/sam-singh". */
 export function pagePath(slug) {
   return `/${encodeURIComponent(slug)}`;
 }
 
-/** Absolute URL shown to people, e.g. "mywiki.com/ram-singh" (uses the current host). */
+/** Absolute URL shown to people, e.g. "mywiki.com/sam-singh" (uses the current host). */
 export function displayUrl(slug) {
   const host = typeof window !== 'undefined' ? window.location.host : 'mywiki.com';
   return `${host}/${slug}`;

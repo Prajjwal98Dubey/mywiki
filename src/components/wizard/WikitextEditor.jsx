@@ -75,7 +75,7 @@ function InternalLinkDialog({ initialLabel, onInsert, onClose }) {
     >
       <div className="space-y-4">
         <AppField label="Page" hint="The person's name or page address. Pages that don't exist yet show as red links.">
-          <AppInput autoFocus value={target} onChange={(e) => setTarget(e.target.value)} onKeyDown={enterSubmits(() => insert())} placeholder="e.g. Ram Singh" />
+          <AppInput autoFocus value={target} onChange={(e) => setTarget(e.target.value)} onKeyDown={enterSubmits(() => insert())} placeholder="e.g. Sam Singh" />
         </AppField>
         {q && results.length > 0 && (
           <ul className="m-0 -mt-2 list-none space-y-1 p-0">
@@ -85,7 +85,7 @@ function InternalLinkDialog({ initialLabel, onInsert, onClose }) {
                   type="button"
                   className="app-menu-item"
                   onClick={() => {
-                    // Use the exact slug when it differs from the title (e.g. ram-singh-1rqdasr3r).
+                    // Use the exact slug when it differs from the title (e.g. sam-singh-1rqdasr3r).
                     const exact = slugify(r.title) === r.slug ? r.title : r.slug;
                     insert(exact, label || (exact === r.slug ? r.title : ''));
                   }}

@@ -11,9 +11,9 @@ describe('OAuthButtons', () => {
 
   it('links each configured provider to its start URL, keeping returnTo', async () => {
     vi.mocked(getProviders).mockResolvedValue({ providers: [{ id: 'google', name: 'Google' }] });
-    render(<OAuthButtons returnTo="/create?title=Ram Singh" />);
+    render(<OAuthButtons returnTo="/create?title=Sam Singh" />);
     const link = await screen.findByRole('link', { name: 'Continue with Google' });
-    expect(link).toHaveAttribute('href', '/api/auth/oauth/google/start?returnTo=%2Fcreate%3Ftitle%3DRam%20Singh');
+    expect(link).toHaveAttribute('href', '/api/auth/oauth/google/start?returnTo=%2Fcreate%3Ftitle%3DSam%20Singh');
   });
 
   it('shows a generic button for providers without a logo (new providers need no client change)', async () => {

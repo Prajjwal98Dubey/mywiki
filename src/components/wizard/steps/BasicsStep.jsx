@@ -60,7 +60,7 @@ export default function BasicsStep({ mode, slug }) {
   return (
     <div className="space-y-6">
       <AppField label="Full name" hint="This is the title of the page." error={err('title')}>
-        <AppInput autoFocus placeholder="e.g. Ram Singh" maxLength={100} {...register('title')} />
+        <AppInput autoFocus placeholder="e.g. Sam Singh" maxLength={100} {...register('title')} />
       </AppField>
       <AppField
         label="Short description"

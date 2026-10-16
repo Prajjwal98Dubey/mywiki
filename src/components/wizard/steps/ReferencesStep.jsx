@@ -203,7 +203,7 @@ export default function ReferencesStep() {
     (q, signal) =>
       suggest(q, { limit: 6 }, signal).then((d) =>
         (d.results || []).map((r) => ({
-          // Plain title when it maps to the slug, otherwise the exact slug (e.g. ram-singh-1rqdasr3r).
+          // Plain title when it maps to the slug, otherwise the exact slug (e.g. sam-singh-1rqdasr3r).
           value: slugify(r.title) === r.slug ? r.title : r.slug,
           label: r.title,
           hint: r.shortDescription,
