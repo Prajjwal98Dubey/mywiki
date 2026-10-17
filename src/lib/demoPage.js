@@ -1,13 +1,6 @@
 // Sample article used for the illustrations on the home and auth pages (rendered with the real renderer).
 
-const portrait = `data:image/svg+xml,${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 260">
-    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfd9f6"/><stop offset="1" stop-color="#f3e3c4"/></linearGradient></defs>
-    <rect width="220" height="260" fill="url(#g)"/>
-    <circle cx="110" cy="100" r="44" fill="#5b6478"/>
-    <path d="M30 260c4-58 40-92 80-92s76 34 80 92z" fill="#5b6478"/>
-  </svg>`,
-)}`;
+const portrait = '/user_default.png';
 
 export const demoPage = {
   slug: 'sam-singh',
