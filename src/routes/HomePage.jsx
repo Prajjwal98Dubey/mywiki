@@ -9,24 +9,6 @@ import ArticleMock from '../components/app/ArticleMock.jsx';
 import PageCard from '../components/app/PageCard.jsx';
 import Icon from '../components/ui/Icon.jsx';
 
-const STEPS = [
-  {
-    icon: 'edit',
-    title: 'Answer a few questions',
-    text: 'A guided form asks for the basics — name, birth date, work, education — one step at a time.',
-  },
-  {
-    icon: 'article',
-    title: 'Tell your story',
-    text: 'Add an introduction and sections like Early life or Career. Cite sources, link other people.',
-  },
-  {
-    icon: 'globe',
-    title: 'Publish and share',
-    text: 'Get a page that reads like an encyclopedia entry, at a short link that is yours to share.',
-  },
-];
-
 const FEATURES = [
   ['Infobox', 'Photo, birth date with age, occupation, education and more — in the familiar side box.'],
   ['Citations', 'Numbered footnotes and a reference list, so every claim can point to a source.'],
@@ -91,31 +73,6 @@ function Hero({ user, count }) {
           <ArticleMock height={460} />
         </div>
       </div>
-    </section>
-  );
-}
-
-function HowItWorks() {
-  return (
-    <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" aria-labelledby="how-heading">
-      <p className="m-0 text-xs font-semibold tracking-[0.2em] text-app-accent uppercase">How it works</p>
-      <h2 id="how-heading" className="mt-2 mb-10 max-w-2xl font-display text-4xl leading-tight font-medium">
-        From a blank form to a finished article in three steps.
-      </h2>
-      <ol className="m-0 grid list-none gap-5 p-0 md:grid-cols-3">
-        {STEPS.map((s, i) => (
-          <li key={s.title} className="app-card relative overflow-hidden p-6">
-            <span className="absolute -top-4 right-3 font-display text-[5.5rem] leading-none font-semibold text-app-surface-muted select-none">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <span className="relative flex size-11 items-center justify-center rounded-xl bg-app-accent-soft text-app-accent">
-              <Icon name={s.icon} size={20} />
-            </span>
-            <h3 className="relative mt-5 mb-1.5 text-lg font-semibold">{s.title}</h3>
-            <p className="relative m-0 text-sm text-app-muted">{s.text}</p>
-          </li>
-        ))}
-      </ol>
     </section>
   );
 }
@@ -223,7 +180,6 @@ export default function HomePage() {
   return (
     <>
       <Hero user={user} count={count.data?.count} />
-      <HowItWorks />
       <Recent recent={recent} />
       <Features />
       <CallToAction user={user} />
