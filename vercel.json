@@ -11,11 +11,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://my-wiki.xyz/api/:path*"
+      "destination": "https://api1.my-wiki.xyz/api/:path*"
     },
     {
       "source": "/uploads/:path*",
-      "destination": "https://my-wiki.xyz/uploads/:path*"
+      "destination": "https://api1.my-wiki.xyz/uploads/:path*"
     },
     {
       "source": "/(.*)",
